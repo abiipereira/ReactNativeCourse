@@ -4,7 +4,7 @@ import { Card } from 'react-native-elements';
 import { DISHES } from '../shared/dishes';
 
 function RenderDish(props) {
-    console.log("here");
+    
     const dish = props.dish;
     
         if (dish != null) {
@@ -19,13 +19,13 @@ function RenderDish(props) {
             );
         }
         else {
-            return(<View> <Text> Dish</Text> </View>);
+            return(<View> </View>);
         }
 }
 
 class Dishdetail extends Component {
      constructor(props) {
-        console.log("y")
+        
         super(props);
         this.state = {
             dishes: DISHES
