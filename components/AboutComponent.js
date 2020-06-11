@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
-import { LEADERS } from '../shared/leaders';
 import { HISTORY } from '../shared/history';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+      leaders: state.leaders
+    }
+  }
 
 function History(props) {
     console.log(props.item);
@@ -12,8 +19,7 @@ function History(props) {
         if (item != null) {
             return(
                 <Card title={item.name}>
-                    <Text>
-                        {item.description}</Text>
+                    <Text>{item.description}</Text>
                 </Card>
             );
         }
@@ -28,7 +34,6 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            leaders: LEADERS,
             history: HISTORY
         };
         
@@ -51,7 +56,7 @@ class About extends Component {
                     title={item.name}
                     subtitle={item.description}
                     hideChevron={true}
-                    leftAvatar={{ source: require('./images/alberto.png')}}
+                     leftAvatar={{source: {uri: baseUrl + item.image}}}
                   />
         );
     };
@@ -61,7 +66,7 @@ class About extends Component {
            <History item={this.state.history[0]}/>
 
           <Card title="Corporate Leadership">
-          <FlatList  data={this.state.leaders}   renderItem={renderMenuItem}    keyExtractor={item => item.id.toString()}      />
+          <FlatList  data={this.props.leaders.leaders}   renderItem={renderMenuItem}    keyExtractor={item => item.id.toString()}      />
               
           </Card>
           </View>
@@ -69,4 +74,4 @@ class About extends Component {
     }
 }
 
-export default About;
+export default connect(mapStateToProps)(About);
