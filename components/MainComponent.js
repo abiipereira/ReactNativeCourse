@@ -118,7 +118,7 @@ const ReservationNavigator = createStackNavigator({
         iconStyle={{ color: 'white' }} 
         onPress={ () => navigation.navigate('DrawerToggle') } />    
     })
-  })
+  });
 
 
    const FavoritesNavigator = createStackNavigator({
@@ -136,7 +136,7 @@ const ReservationNavigator = createStackNavigator({
         iconStyle={{ color: 'white' }} 
         onPress={ () => navigation.navigate('DrawerToggle') } />    
     })
-  })
+  });
 
 
 
@@ -229,7 +229,8 @@ const MainNavigator = createDrawerNavigator({
             ),
         }, 
       },
-      Favorites:
+
+    Favorites:
         { screen: FavoritesNavigator,
           navigationOptions: {
             title: 'My Favorites',
@@ -244,7 +245,7 @@ const MainNavigator = createDrawerNavigator({
             ),
           }
         },
-      Reservation:
+    Reservation:
       { screen: ReservationNavigator,
         navigationOptions: {
           title: 'Reserve Table',
